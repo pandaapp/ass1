@@ -1,0 +1,37 @@
+<html>
+ <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head> 
+<body>
+<form method="post" action="/">
+	<input type="text" name="url" id= "url_ed" placeholder="Enter The Url"><p style="text-indent: 5em;"></p>
+      <button type="button" onclick="Load();">Load URL</button>&emsp;
+	 <button type="submit">submit</button>&emsp;
+	</form>
+	  <iframe id="framei" width="500" height="300" style="background:#ffffff"></iframe>
+     <button type="button" onclick="loadDoc();">Display</button>
+	 <textarea id="dom" rows="4" cols="50"></textarea>
+	 <p id="demo"></p>
+
+<script>
+function Load(){
+var url_pass = document.getElementById("url_ed").value;
+ document.getElementById('framei').src = url_pass;
+document.cookie = url_pass; 
+ }
+   function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("dom").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "dom.txt", true);
+  xhttp.send();
+}
+
+
+	
+</script>
+</body>
+</html>
